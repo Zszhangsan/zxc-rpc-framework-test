@@ -19,6 +19,7 @@
     </properties>
     <modules>
         <module>zxc-rpc-remote</module>
+        <module>common</module>
     </modules>
     <dependencies>
         <dependency>
