@@ -4,7 +4,7 @@ package zxc.rpc.zxcrpcremote.map;
  * 扩容后，如果hash不均匀怎么办
  * 比如某个Node非常长，时间复杂度又会变成o(N)
  * 解决方法是将node转换成树
- *
+ *D:\dev_software!\java.base\java\lang\Object.class
  * hashMap在高并发下不安全的原因
  *
  * @param <K>

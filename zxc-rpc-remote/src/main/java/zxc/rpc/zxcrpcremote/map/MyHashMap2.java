@@ -16,8 +16,8 @@ public class MyHashMap2<K, V> {
 
     public V put(K key, V value) {
         int keyIndex = indexOf(key);
-        Node<K, V> head = table[keyIndex];
-        if (head == null) {
+        Node<K, V> item = table[keyIndex];
+        if (item == null) {
             table[keyIndex] = new Node<>(key, value);
             size ++;
             return null;
@@ -25,19 +25,19 @@ public class MyHashMap2<K, V> {
         // 循环链表
         while (true) {
 //            同一个key，替换掉旧值
-            if (head.key.equals(key)) {
-                V oldValue = head.value;
-                head.value = value;
+            if (item.key.equals(key)) {
+                V oldValue = item.value;
+                item.value = value;
                 return oldValue;
             }
-            // 链表尾
-            if (head.next == null) {
-                head.next = new Node<>(key, value);
+            // 链表尾 此时出现了hash冲突，所以会向后继续放入值，而不是命中的目标key放入值。
+            if (item.next == null) {
+                item.next = new Node<>(key, value);
                 size ++;
                 return null;
             }
             // 此处的kvNod为了下次循环使用
-            head = head.next;
+            item = item.next;
         }
     }
 
@@ -67,8 +67,8 @@ public class MyHashMap2<K, V> {
             return head.value;
         }
 
-        // 循环链表删除
-        // 每次两个两个删除
+        // 循环链表删除，由于会有hash冲突的场景出现，
+        // 所以需要循环链表，通过equals方法查找到符合条件的值，并删除
         Node<K, V> pre = head;
         Node<K, V> current = head.next;
         while (current != null) {
