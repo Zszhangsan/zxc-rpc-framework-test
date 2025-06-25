@@ -1,4 +1,4 @@
-package zxc.rpc.zxcrpcremote.reflection.dynamic.jdk;
+package zxc.rpc.zxcrpcremote.reflection.proxy.jdk;
 
 import java.lang.reflect.Proxy;
 
@@ -12,6 +12,7 @@ public class Client {
                 myInvocationHandler);
 
         proxy.request();
+        proxy.response();
         System.out.println("end");
 
     }

@@ -1,27 +1,37 @@
 @startuml
-'https://plantuml.com/class-diagram
-
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+interface Subject {
+    +request(): void
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class RealSubject {
+    +request(): void
 }
 
+interface InvocationHandler {
+    +invoke(proxy, method, args): Object
+}
+
+class Proxy {
+    +newProxyInstance(ClassLoader, Class[], InvocationHandler): Object
+}
+
+class Client {
+    +main(args: String[]): void
+}
+
+class CustomInvocationHandler {
+    -target: Object
+    +invoke(proxy, method, args): Object
+}
+
+Subject <|.. RealSubject
+Subject <|.. Proxy
+InvocationHandler <|.. CustomInvocationHandler
+RealSubject <- CustomInvocationHandler
+Proxy --> InvocationHandler
+Client --> Subject
+Client --> Proxy
+
+note right of Proxy: JDK提供的代理工厂类\n用于动态创建代理对象
+note right of CustomInvocationHandler: 自定义的调用处理器\n实现代理逻辑
 @enduml

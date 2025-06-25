@@ -1,4 +1,8 @@
 package zxc.rpc.zxcrpcremote.reflection.proxy;
 
-public class RealSubject {
+public class RealSubject implements Subject{
+    @Override
+    public void request() {
+        System.out.println("RealSubject request");
+    }
 }

@@ -1,4 +1,4 @@
-package zxc.rpc.zxcrpcremote.reflection.dynamic.jdk;
+package zxc.rpc.zxcrpcremote.reflection.proxy.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
