@@ -20,6 +20,10 @@
     <modules>
         <module>zxc-rpc-remote</module>
         <module>common</module>
+        <module>spi-service</module>
+        <module>spi-service-on</module>
+        <module>spi-service-two</module>
+        <module>spi-app</module>
     </modules>
     <dependencies>
         <dependency>
